@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum de Programadores</title>
+    <link rel="stylesheet" href="stiles.css">
+    <link rel="icon" href="https://i.ibb.co/q5Tdp18/logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/q5Tdp18/logo.png" alt="Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#base">Base de site</a></li>
+                <li><a href="#sites-gratis">Sites grátis</a></li>
+                <li><a href="#apoiar-dev">Apoiar um DEV</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="base" class="hidden">
+            <h1>Base de site</h1>
+            <p>Compartilhe e aprenda as melhores práticas para estruturar sites.</p>
+            <div class="panel">
+                <div class="panel-header">Clique para expandir</div>
+                <div class="panel-content">
+                    <p>Exemplo de conteúdo detalhado sobre bases de site. Adicione mais aqui!</p>
+                    <ul>
+                        <li>HTML básico</li>
+                        <li>CSS avançado</li>
+                        <li>JavaScript dinâmico</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+                
+        <section id="sites-gratis" class="hidden">
+            <h1>Sites grátis</h1>
+            <p>Descubra plataformas e ferramentas gratuitas para criar sites incríveis.</p>
+            <div class="panel">
+                <div class="panel-header">Clique para expandir</div>
+                <div class="panel-content">
+                    <p>Exemplo de conteúdo detalhado sobre sites grátis.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="apoiar-dev" class="hidden">
+            <h1>Apoiar um DEV</h1>
+            <p>Encontre maneiras de apoiar desenvolvedores independentes e suas iniciativas.</p>
+            <div class="panel">
+                <div class="panel-header">Clique para expandir</div>
+                <div class="panel-content">
+                    <p>Exemplo de conteúdo detalhado sobre como apoiar um desenvolvedor.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.panel').forEach(panel => {
+            panel.addEventListener('click', () => {
+                panel.classList.toggle('expanded');
+            });
+        });
+    </script>
+
+<script>
+    // Seleciona todas as opções do menu e as seções correspondentes
+    const menuLinks = document.querySelectorAll('nav ul li a');
+    const sections = document.querySelectorAll('section');
+
+    // Adiciona o evento de clique a cada link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Evita comportamento padrão do link
+            const targetId = link.getAttribute('href').substring(1); // Obtém o ID alvo
+            
+            // Esconde todas as seções
+            sections.forEach(section => section.classList.remove('visible'));
+            sections.forEach(section => section.classList.add('hidden'));
+
+            // Mostra a seção correspondente
+            const targetSection = document.getElementById(targetId);
+            targetSection.classList.add('visible');
+            targetSection.classList.remove('hidden');
+        });
+    });
+</script>
+
+</body>
+</html>
